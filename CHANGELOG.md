@@ -6,6 +6,10 @@
 
 - Emit public lifecycle events for async `workflowScript` roots and their dynamically launched keyed children so companion UIs can follow authoritative run artifacts without scraping terminal output.
 
+### Fixed
+
+- Preserve and safely prune Pi 0.87 context edits when forking sessions, including replacement content and signed Anthropic thinking blocks.
+
 ## [0.70.1] - 2026-09-20
 
 ### Highlights
