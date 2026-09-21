@@ -2376,7 +2376,7 @@ export interface SubagentChildStatusEvent {
 	version: 1;
 	runId: string;
 	childId: string;
-	status: "stopping" | "stopped";
+	status: "started" | "stopping" | "stopped";
 	ts: number;
 	reason?: string;
 	source?: "rpc" | "async";

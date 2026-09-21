@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Emit public lifecycle events for async `workflowScript` roots and their dynamically launched keyed children so companion UIs can follow authoritative run artifacts without scraping terminal output.
+
 ## [0.70.1] - 2026-09-20
 
 ### Highlights
