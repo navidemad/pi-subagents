@@ -5,14 +5,18 @@
 ### Added
 
 - Emit public lifecycle events for async `workflowScript` roots and their dynamically launched keyed children so companion UIs can follow authoritative run artifacts without scraping terminal output. Thanks to [@navidemad](https://github.com/navidemad) for [#2382](https://github.com/nicobailon/pi-subagents/pull/2382).
+- In-process RPC `cost` method: returns the same parent-plus-child accounting `/subagent-cost` renders, as versioned data (`{ version: 1, parent, children, childTotal, total, unresolvedAsyncChildren }`), so other extensions can surface subagent spend without scraping slash output. `ping.capabilities.cost` advertises `{ version: 1 }`. The report logic moved unchanged into `src/slash/subagent-cost.ts`; `/subagent-cost` output is identical. Thanks to [@raymondtri](https://github.com/raymondtri) for [#2378](https://github.com/nicobailon/pi-subagents/pull/2378).
 
 ### Changed
 
 - Raise the optional `@earendil-works/pi-ai` peer dependency floor to 0.86.1 so package metadata no longer advertises unsupported older hosts. Thanks to [@samuela](https://github.com/samuela) for [#2373](https://github.com/nicobailon/pi-subagents/issues/2373).
+- Keep the full `subagent` tool dormant until an authorized request activates it through the compact discovery loader, reducing unrelated prompt context without changing direct command, RPC, TUI, or nested-child execution. Thanks to [@Knimoms](https://github.com/Knimoms) for [#2380](https://github.com/nicobailon/pi-subagents/pull/2380).
 
 ### Fixed
 
 - Preserve and safely prune Pi 0.87 context edits when forking sessions, including replacement content and signed Anthropic thinking blocks.
+- Restore watchdog reviews and permission arbitration on the stable Pi 0.86.1 host package layout. Thanks to [@zieglar](https://github.com/zieglar) for the reproduction and version comparison in [#2377](https://github.com/nicobailon/pi-subagents/issues/2377).
+- Allow completed retained agents to resume when their own descendant allowlist excludes them, while preserving both parent authority and the descendant restriction; legacy retained children without original-authority recovery metadata now fail closed. Thanks to [@riskywhat](https://github.com/riskywhat) for [#2379](https://github.com/nicobailon/pi-subagents/issues/2379), building on the allowlist work in [#2338](https://github.com/nicobailon/pi-subagents/pull/2338) credited to [@shkrabov](https://github.com/shkrabov).
 
 ## [0.70.1] - 2026-09-20
 
